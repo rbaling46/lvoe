@@ -6,6 +6,7 @@
     <title>A Question...</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
 
@@ -41,6 +42,7 @@
                 <button id="yes-btn">Yes</button>
                 <button id="no-btn">No</button>
             </div>
+            <img id="success-flower" src="flower.png" alt="Flower">
         </div>
     </div>
 
@@ -58,29 +60,40 @@
         const gif = document.getElementById("gif");
         const finalYesBtn = document.getElementById("yes-btn");
         const finalNoBtn = document.getElementById("no-btn");
+        const successFlower = document.getElementById("success-flower");
 
-        // Create floating hearts
-        function createHearts() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 5 + 's';
+        // Create floating hearts and sunflowers
+        function createFloatingElements() {
+            const isSunflower = Math.random() > 0.6; // 40% chance of sunflower
+            const el = document.createElement('div');
             
-            // Random colors from palette
-            const colors = ['#C2103B', '#FF5E24', '#F8DE22', '#ffffff', '#6A0D3D'];
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            heart.style.setProperty('--heart-color', randomColor);
+            // Random position and duration
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDuration = Math.random() * 3 + 5 + 's';
+
+            if (isSunflower) {
+                el.classList.add('sunflower-float');
+                el.innerText = '🌻';
+                // Random size for sunflower
+                el.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            } else {
+                el.classList.add('heart');
+                // Random colors from palette for hearts
+                const colors = ['#C2103B', '#FF5E24', '#F8DE22', '#ffffff', '#6A0D3D'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                el.style.setProperty('--heart-color', randomColor);
+            }
             
-            heartBg.appendChild(heart);
+            heartBg.appendChild(el);
             
             // Remove after animation to prevent DOM overflow
-            heart.addEventListener('animationend', () => {
-                heart.remove();
+            el.addEventListener('animationend', () => {
+                el.remove();
             });
         }
 
-        // Start hearts
-        const heartInterval = setInterval(createHearts, 300);
+        // Start animation
+        const heartInterval = setInterval(createFloatingElements, 300);
 
         function nextStep() {
             step++;
@@ -131,6 +144,7 @@
             question.innerHTML = "Yay, see you on the 14th of Feb!";
             gif.src = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExajdjbnNyY210ZHEzMG5zcTU1NmF6YnI5bmhwa2duamc1N3Y5Y214ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/a7Ytrd0lTov5lYMsqe/giphy.gif";
             finalNoBtn.style.display = 'none'; // Optional: remove No button after success
+            successFlower.classList.add('show');
         });
 
         finalNoBtn.addEventListener("mouseover", () => {
