@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Question...</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -27,15 +28,19 @@
 
     <!-- Final Wrapper -->
     <div id="wrapper">
-        <h2 id="question">Will you go out with me?</h2>
-        <img
-             id="gif"
-             alt="gif"
-             src="https://media.giphy.com/media/FTGah7Mx3ss04PcasF/giphy.gif"
-             />
-        <div id="btn-group">
-          <button id="yes-btn">Yes</button>
-          <button id="no-btn">No</button>
+        <div class="love-letter">
+            <h2 id="question">Will you go out with me?</h2>
+            <div class="gif-container">
+                <img
+                    id="gif"
+                    alt="gif"
+                    src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bWlqN21ham82dnViM3U5Z21yaHR2Z2xoeDBhZzVqcDZ6Y3F5Yjc1YiZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/xZn6QSIyPKNpaTbGa2/giphy.gif"
+                />
+            </div>
+            <div id="btn-group">
+                <button id="yes-btn">Yes</button>
+                <button id="no-btn">No</button>
+            </div>
         </div>
     </div>
 
@@ -124,7 +129,7 @@
         /* --- Logic for Final Wrapper --- */
         finalYesBtn.addEventListener("click", () => {
             question.innerHTML = "Yay, see you on the 14th of Feb!";
-            gif.src = "https://media.giphy.com/media/UMon0fuimoAN9ueUNP/giphy.gif";
+            gif.src = "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExajdjbnNyY210ZHEzMG5zcTU1NmF6YnI5bmhwa2duamc1N3Y5Y214ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/a7Ytrd0lTov5lYMsqe/giphy.gif";
             finalNoBtn.style.display = 'none'; // Optional: remove No button after success
         });
 
